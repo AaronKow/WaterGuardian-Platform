@@ -1,0 +1,212 @@
+<template name="realTime">
+    {{waterGoalChecker}}
+    <div class="col-sm-10 col-md-10">
+        <div class="row animated fadeInLeft">
+            {{#if isActivePath '/real-time-monitoring/water-closet'}}
+                {{> waterClosetTemplate}}
+            {{/if}}
+            {{#if isActivePath '/real-time-monitoring/bathroom'}}
+                {{> bathRoomTemplate}}
+            {{/if}}
+            {{#if isActivePath '/real-time-monitoring/kitchen'}}
+                {{> kitchenTemplate}}
+            {{/if}}
+        </div>
+    </div>
+</template>
+
+<template name="waterClosetTemplate">
+    <div class="col-sm-12 col-md-12 content">
+        <div class="panel panel-default">
+            <div class="panel-heading"><b>House Overview</b></div>
+            <div class="panel-body">
+                {{> waterClosetHouseTemplate}}
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-12 content">
+        <div class="panel panel-default">
+            <div class="panel-heading"><b>Real-Time Monitoring for Water Closet</b></div>
+            <div class="panel-body">
+                {{> waterClosetRealTime}}
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="bathRoomTemplate">
+    <div class="col-sm-12 col-md-12 content">
+        <div class="panel panel-default">
+            <div class="panel-heading"><b>House Overview</b></div>
+            <div class="panel-body">
+                {{> bathroomHouseTemplate}}
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-12 content">
+        <div class="panel panel-default">
+            <div class="panel-heading"><b>Real-Time Monitoring for Bathroom</b></div>
+            <div class="panel-body">
+                {{> bathRoomRealTime}}
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="kitchenTemplate">
+    <div class="col-sm-12 col-md-12 content">
+        <div class="panel panel-default">
+            <div class="panel-heading"><b>House Overview</b></div>
+            <div class="panel-body">
+                {{> kitchenHouseTemplate}}
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-12 content">
+        <div class="panel panel-default">
+            <div class="panel-heading"><b>Real-Time Monitoring for Kitchen</b></div>
+            <div class="panel-body">
+                {{> kitchenRealTime}}
+            </div>
+        </div>
+    </div>
+</template>
+
+<!-- House Template -->
+
+<template name="waterClosetHouseTemplate">
+    <div style="font-size: 11px;margin:auto; width:514px;height: 20em" class="hidden-xs">
+        <div class="dining-area-lg"><p class="dining-area-text-lg">Dining Area</p><p class="living-area-text-lg">Living Area</p></div>
+        <div class="water-closet-lg highlighted"><p class="water-closet-text-lg">Water Closet</p></div>
+        <div class="kitchen-lg"><p class="kitchen-text-lg">Kitchen</p></div>
+        <div class="bedroom2-lg"><p class="bedroom2-text-lg">Bedroom 2</p><p class="bedroom1-text-lg">Bedroom 1</p></div>
+        <div class="share-bathroom-lg"><p class="share-bathroom-text-lg">Sharing Bathroom</p></div>
+        <div class="wall-line-lg"></div>
+    </div>
+    <div style="font-size: 9px;margin:auto; width:230px;height: 8.95em" class="visible-xs">
+        <div class="dining-area-xs"><p class="dining-area-text-xs">Dining Area</p><p class="living-area-text-xs">Living Area</p></div>
+        <div class="water-closet-xs highlighted"><p class="water-closet-text-xs">WC</p></div>
+        <div class="kitchen-xs"><p class="kitchen-text-xs">Kitchen</p></div>
+        <div class="bedroom2-xs"><p class="bedroom2-text-xs">Bedroom 2</p><p class="bedroom1-text-xs">Bedroom 1</p></div>
+        <div class="share-bathroom-xs"><p class="share-bathroom-text-xs">Sharing Bathroom</p></div>
+        <div class="wall-line-xs"></div>
+    </div>
+</template>
+
+<template name="bathroomHouseTemplate">
+    <div style="font-size: 11px;margin:auto; width:514px;height: 20em" class="hidden-xs">
+        <div class="dining-area-lg"><p class="dining-area-text-lg">Dining Area</p><p class="living-area-text-lg">Living Area</p></div>
+        <div class="water-closet-lg"><p class="water-closet-text-lg">Water Closet</p></div>
+        <div class="kitchen-lg"><p class="kitchen-text-lg">Kitchen</p></div>
+        <div class="bedroom2-lg"><p class="bedroom2-text-lg">Bedroom 2</p><p class="bedroom1-text-lg">Bedroom 1</p></div>
+        <div class="share-bathroom-lg highlighted"><p class="share-bathroom-text-lg">Sharing Bathroom</p></div>
+        <div class="wall-line-lg"></div>
+    </div>
+    <div style="font-size: 9px;margin:auto; width:230px;height: 8.95em" class="visible-xs">
+        <div class="dining-area-xs"><p class="dining-area-text-xs">Dining Area</p><p class="living-area-text-xs">Living Area</p></div>
+        <div class="water-closet-xs"><p class="water-closet-text-xs">WC</p></div>
+        <div class="kitchen-xs"><p class="kitchen-text-xs">Kitchen</p></div>
+        <div class="bedroom2-xs"><p class="bedroom2-text-xs">Bedroom 2</p><p class="bedroom1-text-xs">Bedroom 1</p></div>
+        <div class="share-bathroom-xs highlighted"><p class="share-bathroom-text-xs">Sharing Bathroom</p></div>
+        <div class="wall-line-xs"></div>
+    </div>
+</template>
+
+<template name="kitchenHouseTemplate">
+    <div style="font-size: 11px;margin:auto; width:514px;height: 20em" class="hidden-xs">
+        <div class="dining-area-lg"><p class="dining-area-text-lg">Dining Area</p><p class="living-area-text-lg">Living Area</p></div>
+        <div class="water-closet-lg"><p class="water-closet-text-lg">Water Closet</p></div>
+        <div class="kitchen-lg highlighted"><p class="kitchen-text-lg">Kitchen</p></div>
+        <div class="bedroom2-lg"><p class="bedroom2-text-lg">Bedroom 2</p><p class="bedroom1-text-lg">Bedroom 1</p></div>
+        <div class="share-bathroom-lg"><p class="share-bathroom-text-lg">Sharing Bathroom</p></div>
+        <div class="wall-line-lg"></div>
+    </div>
+    <div style="font-size: 9px;margin:auto; width:230px;height: 8.95em" class="visible-xs">
+        <div class="dining-area-xs"><p class="dining-area-text-xs">Dining Area</p><p class="living-area-text-xs">Living Area</p></div>
+        <div class="water-closet-xs"><p class="water-closet-text-xs">WC</p></div>
+        <div class="kitchen-xs highlighted"><p class="kitchen-text-xs">Kitchen</p></div>
+        <div class="bedroom2-xs"><p class="bedroom2-text-xs">Bedroom 2</p><p class="bedroom1-text-xs">Bedroom 1</p></div>
+        <div class="share-bathroom-xs"><p class="share-bathroom-text-xs">Sharing Bathroom</p></div>
+        <div class="wall-line-xs"></div>
+    </div>
+</template>
+
+<!-- Real Time Template -->
+
+<template name="waterClosetRealTime">
+    <div>
+        <p>Current Water Flow Status: {{{waterFlow}}}</p>
+        <p>
+            Real-Time Configuration: 
+            <select id="realTimeConfigure">
+              <option value="all">From the beginning of time</option>
+              <option value="10">Within 10 seconds</option>
+              <option value="30">Within 30 seconds</option>
+              <option value="60">Within 1 minute</option>
+              <option value="300">Within 5 minutes</option>
+            </select>
+            <button id="playRealTime" style="margin-left: 10px" type="button" class="btn btn-white btn-sm"><i class="fa fa-play"></i></button>
+            <button id="startWaterCloset" style="margin-left: 10px" type="button" class="btn btn-white btn-sm">Start Water Flow</button>
+            <button id="stopWaterClose" style="margin-left: 10px" type="button" class="btn btn-white btn-sm">Stop Water Flow</button>
+        </p>
+    </div>
+
+    <div id="marker"></div>
+    <div id="chart_container">
+        <div id="y_axis"></div>
+        <div id="realTimeMonitor"></div>
+    </div>
+    <div id="legend"></div>
+</template>
+
+<template name="bathRoomRealTime">
+    <div>
+        <p>Current Water Flow Status: {{{waterFlow}}}</p>
+        <p>
+            Real-Time Configuration: 
+            <select id="realTimeConfigure">
+              <option value="all">From the beginning of time</option>
+              <option value="10">Within 10 seconds</option>
+              <option value="30">Within 30 seconds</option>
+              <option value="60">Within 1 minute</option>
+              <option value="300">Within 5 minutes</option>
+            </select>
+            <button id="playRealTime" style="margin-left: 10px" type="button" class="btn btn-white btn-sm"><i class="fa fa-play"></i></button>
+            <button id="startBathroom" style="margin-left: 10px" type="button" class="btn btn-white btn-sm">Start Water Flow</button>
+            <button id="stopBathroom" style="margin-left: 10px" type="button" class="btn btn-white btn-sm">Stop Water Flow</button>
+        </p>
+    </div>
+
+    <div id="marker"></div>
+    <div id="chart_container">
+        <div id="y_axis"></div>
+        <div id="realTimeMonitor"></div>
+    </div>
+    <div id="legend"></div>
+</template>
+
+<template name="kitchenRealTime">
+    <div>
+        <p>Current Water Flow Status: {{{waterFlow}}}</p>
+        <p>
+            Real-Time Configuration: 
+            <select id="realTimeConfigure">
+              <option value="all">From the beginning of time</option>
+              <option value="10">Within 10 seconds</option>
+              <option value="30">Within 30 seconds</option>
+              <option value="60">Within 1 minute</option>
+              <option value="300">Within 5 minutes</option>
+            </select>
+            <button id="playRealTime" style="margin-left: 10px" type="button" class="btn btn-white btn-sm"><i class="fa fa-play"></i></button>
+            <button id="startKitchen" style="margin-left: 10px" type="button" class="btn btn-white btn-sm">Start Water Flow</button>
+            <button id="stopKitchen" style="margin-left: 10px" type="button" class="btn btn-white btn-sm">Stop Water Flow</button>
+        </p>
+    </div>
+
+    <div id="marker"></div>
+    <div id="chart_container">
+        <div id="y_axis"></div>
+        <div id="realTimeMonitor"></div>
+    </div>
+    <div id="legend"></div>
+</template>

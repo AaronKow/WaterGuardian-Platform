@@ -1,0 +1,45 @@
+<template name="calendar">
+    <div class="col-sm-10 col-md-10">
+        <div class="row animated fadeIn">
+            <div class="col-sm-12 col-md-12 content">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><b>Water Consumption Calendar</b></div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-12 col-sm-12 animated fadeInDown">
+                            	<div id="calendar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{> scheduleModal}}
+    </div>
+</template>
+
+<template name="scheduleModal">
+    <div class="modal inmodal eventModal" id="myModal4" tabindex="-1" role="dialog"  aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content animated fadeIn">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <i class="glyphicon glyphicon-tint modal-icon"></i>
+                    <h4 class="modal-title">{{title}}</h4>
+                    <div><small><b>Start Date:</b> {{formatTimeandDate2 startTime}} </small><small><b>Time:</b> {{formatTimeandDate4 startTime}} </small></div>
+                    <div id="endDateHolder"><small><b>End Date:</b> {{formatTimeandDate2 endTime}}, </small><small><b>Time:</b> {{formatTimeandDate4 endTime}} </small></div>
+                </div>
+                <div class="modal-body">
+                    <p><strong>Description: </strong>{{description}}</p>
+                    <p><strong>Total Usage: </strong>{{usage}} Litres</p>
+                    <p><strong>Average Rate: </strong>{{avgFlowRate}} L/min</p>
+                    <p><strong>Duration: </strong>{{duration}} minutes</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                    <a href="/data-logging"><button type="button" class="btn btn-info editEventButton">View Logging Data</button></a>
+                </div>
+            </div>
+        </div>
+    </div><!--  eventModal -->
+</template>

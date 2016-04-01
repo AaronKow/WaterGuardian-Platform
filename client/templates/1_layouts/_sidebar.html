@@ -1,0 +1,58 @@
+<template name="_sidebar">
+	<div class="col-sm-2 col-md-2 sidebar" style="max-height: 100%"><!-- adjust the height here for proper setting margin in content -->
+		<div class="row">
+			<div class="absolute-wrapper"> </div>
+			<!-- Menu -->
+			<div class="side-menu">
+				<nav class="navbar navbar-default" role="navigation">
+					<!-- Main Menu -->
+					<div class="side-menu-container">
+						<ul class="nav navbar-nav">
+							<li class="{{isActivePath '/dashboard'}}"><a href="/dashboard"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
+							<li class="{{isActivePath '/weather-forecast'}}"><a href="/weather-forecast"><span class="glyphicon glyphicon-cloud"></span> Weather Forecast</a></li>
+							<li class="{{isActivePath '/consumption-calendar'}}"><a href="/consumption-calendar"><span class="glyphicon glyphicon-calendar"></span> Consumption Calendar</a></li>
+							<li class="{{isActivePath '/water-goal'}}"><a href="/water-goal"><span class="glyphicon glyphicon-flag"></span> Water Goal</a></li>
+
+							<!-- Dropdown-->
+							<li class="panel panel-default {{isActiveRoute regex='real-time-monitoring'}}" id="dropdown">
+								<a data-toggle="collapse" href="#dropdown-lvl4">
+									<span class="glyphicon glyphicon-blackboard"></span> Real-Time Monitoring <span class="caret"></span>
+								</a>
+
+								<!-- Dropdown level 1 -->
+								<div id="dropdown-lvl4" class="panel-collapse collapse">
+									<div class="panel-body">
+										<ul class="nav navbar-nav">
+											<li><a href="/real-time-monitoring/water-closet"><span class="glyphicon glyphicon-chevron-right"></span>Water Closet</a></li>
+											<li><a href="/real-time-monitoring/bathroom"><span class="glyphicon glyphicon-chevron-right"></span>Bathroom</a></li>
+											<li><a href="/real-time-monitoring/kitchen"><span class="glyphicon glyphicon-chevron-right"></span>Kitchen</a></li>
+										</ul>
+									</div>
+								</div>
+							</li>
+
+							<li class="panel panel-default {{isActiveRoute regex='foodAnalyzer'}}" id="dropdown">
+								<a data-toggle="collapse" href="#dropdown-lvl5">
+									<span class="glyphicon glyphicon-list"></span> Data Logging <span class="caret"></span>
+								</a>
+
+								<!-- Dropdown level 1 -->
+								<div id="dropdown-lvl5" class="panel-collapse collapse">
+									<div class="panel-body">
+										<ul class="nav navbar-nav">
+											<li><a href="/data-logging"><span class="glyphicon glyphicon-chevron-right"></span>Full Report</a></li>
+										</ul>
+									</div>
+								</div>
+							</li>
+							<li class="{{isActivePath '/email-notification'}}"><a href="/email-notification"><span class="glyphicon glyphicon-envelope"></span> Email Notification </a></li>
+							<li class="{{isActivePath '/api-calls'}}"><a href="/api-calls"><span class="glyphicon glyphicon-send"></span> API Calls </a></li>
+
+						</ul>
+					</div><!-- /.navbar-collapse -->
+				</nav>
+
+			</div>
+		</div>  		
+	</div>
+</template>

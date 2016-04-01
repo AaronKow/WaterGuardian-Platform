@@ -1,0 +1,147 @@
+/*This is CSS setting for houseTemplate use in WaterGuardian*/
+
+/*CSS visible for lg, md and sm*/
+.dining-area-lg {
+	border: 1px solid #CCCCCC; 
+	background-color: #FAFAFA;
+	height: 20em;
+	width: 514px;
+}
+
+.water-closet-lg {
+	border: 1px solid #CCCCCC; 
+	height: 3em; 
+	margin-top: -20em; 
+	width: 100px;
+}
+
+.kitchen-lg {
+	border: 1px solid #CCCCCC;
+	height: 8em; 
+	margin-top: 9em; 
+	width: 100px;
+}
+
+.bedroom2-lg {
+	border: 1px solid #CCCCCC; 
+	height: 8em; 
+	margin: -8em 0 0 99px; 
+	width: 415px;
+}
+
+.share-bathroom-lg {
+	border: 1px solid #CCCCCC; 
+	height: 6em; 
+	margin: -6em 0 0 257.5px; 
+	width: 100px;
+}
+
+.wall-line-lg {
+	border: 1px solid #CCCCCC; 
+	height: 2em; 
+	margin: -8em 0 0 307.5px; 
+	width: 1px;
+}
+
+.dining-area-text-lg {
+	margin: 6em 0 0 100px;
+}
+
+.living-area-text-lg {
+	margin: -15px 0 0 350px;
+}
+
+.water-closet-text-lg {
+	margin: 8px 0 0 10px;
+}
+
+.kitchen-text-lg {
+	margin: 30px 0 0 28px;
+}
+
+.bedroom1-text-lg {
+	margin: -15px 0 0 300px;
+}
+
+.bedroom2-text-lg {
+	margin: 30px 0 0 56px;
+}
+
+.share-bathroom-text-lg {
+	margin: 15px 0 0 28px;
+}
+
+/*CSS visible for xs only*/
+.dining-area-xs {
+	border: 1px solid #CCCCCC; 
+	background-color: #FAFAFA; 
+	height: 8.95em; 
+	width: 230px;
+}
+
+.water-closet-xs {
+	border: 1px solid #CCCCCC; 
+	height: 1.34em; 
+	margin-top: -8.95em; 
+	width: 44.75px;
+}
+
+.kitchen-xs {
+	border: 1px solid #CCCCCC; 
+	height: 3.58em; 
+	margin-top: 4.03em; 
+	width: 44.75px;
+}
+
+.bedroom2-xs {
+	border: 1px solid #CCCCCC; 
+	height: 3.58em; 
+	margin: -3.58em 0 0 43.75px; 
+	width: 186.7px;
+}
+
+.share-bathroom-xs {
+	border: 1px solid #CCCCCC; 
+	height: 2.69em; 
+	margin: -2.69em 0 0 115.73px; 
+	width: 44.75px;
+}
+
+.wall-line-xs {
+	border: 1px solid #CCCCCC; 
+	height: 0.89em; 
+	margin: -3.59em 0 0 138.1px; 
+	width: 1px;
+}
+
+.dining-area-text-xs {
+	margin: 2.69em 0 0 44.75px;
+}
+
+.living-area-text-xs {
+	margin: -12px 0 0 156.61px;
+}
+
+.water-closet-text-xs {
+	margin: 0 0 0 12px;
+}
+
+.kitchen-text-xs {
+	margin: 10px 0 0 7px;
+}
+
+.bedroom1-text-xs {
+	margin: -12px 0 0 133px;
+}
+
+.bedroom2-text-xs {
+	margin: 10px 0 0 15px;
+}
+
+.share-bathroom-text-xs {
+	margin: 0 0 0 1px;
+}
+
+.highlighted{
+	background-color: #99ff99;
+}

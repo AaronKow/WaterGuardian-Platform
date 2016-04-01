@@ -1,0 +1,302 @@
+<template name="waterGoalOverview">
+    {{waterGoalChecker}}
+    <div class="col-sm-10 col-md-10">
+        <div class="row animated fadeIn">
+            <div class="col-sm-12 col-md-12 content">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><b>Water Goal Overview</b></div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-3 col-sm-3">
+                                {{> currentGoal}}
+                            </div>
+                            <div class="col-lg-3 col-sm-3">
+                                {{> currentGoalYear}}
+                            </div>
+                            <div class="col-lg-3 col-sm-3">
+                                {{> currentGoalMonth}}
+                            </div>
+                            <div class="col-lg-3 col-sm-3">
+                                {{> currentGoalDay}}
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div><!-- Total Water Consumption -->
+        </div>
+        
+        <div class="row animated fadeIn">
+            <div class="col-sm-12 col-md-12 content">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><b>Water Closet Goal Overview</b></div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-3 col-sm-3">
+                                {{> waterClosetGoal}}
+                            </div>
+                            <div class="col-lg-3 col-sm-3">
+                                {{> waterClosetGoalYear}}
+                            </div>
+                            <div class="col-lg-3 col-sm-3">
+                                {{> waterClosetGoalMonth}}
+                            </div>
+                            <div class="col-lg-3 col-sm-3">
+                                {{> waterClosetGoalDay}}
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div><!-- Water Closet Goal -->
+        </div>
+
+        <div class="row animated fadeIn">
+            <div class="col-sm-12 col-md-12 content">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><b>Bathroom Goal Overview</b></div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-3 col-sm-3">
+                                {{> bathroomGoal}}
+                            </div>
+                            <div class="col-lg-3 col-sm-3">
+                                {{> bathroomGoalYear}}
+                            </div>
+                            <div class="col-lg-3 col-sm-3">
+                                {{> bathroomGoalMonth}}
+                            </div>
+                            <div class="col-lg-3 col-sm-3">
+                                {{> bathroomGoalDay}}
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div><!-- Bathroom Goal -->
+        </div>
+
+        <div class="row animated fadeIn">
+            <div class="col-sm-12 col-md-12 content">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><b>Kitchen Goal Overview</b></div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-3 col-sm-3">
+                                {{> kitchenGoal}}
+                            </div>
+                            <div class="col-lg-3 col-sm-3">
+                                {{> kitchenGoalYear}}
+                            </div>
+                            <div class="col-lg-3 col-sm-3">
+                                {{> kitchenGoalMonth}}
+                            </div>
+                            <div class="col-lg-3 col-sm-3">
+                                {{> kitchenGoalDay}}
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div><!-- Kitchen Goal -->
+        </div>
+
+        {{> goalModal}}
+    </div>
+</template>
+
+
+<template name="currentGoal">
+    <div class="animated fadeInLeft visible-lg visible-xs">
+        <h2><i class="fa fa-tint"></i> Current Goal</h2>
+        <h5 style="margin-left:30px"><b>{{annualGoal}}</b> Litres per year</h5>
+        <h5 style="margin-left:30px"><b>{{monthlyGoal}}</b> Litres per month</h5>
+        <h5 style="margin-left:30px"><b>{{dailyGoal}}</b> Litres per day</h5><br>
+        <button class="goalModal" style="margin-left:30px; text-decoration: none"><small><i class="fa fa-wrench"></i> Configure your goal here</small></button>
+    </div>
+    <div class="animated fadeInLeft visible-md visible-sm">
+        <h4><i class="fa fa-tint"></i> Current Goal</h4>
+        <h6 style="margin-left:15px"><b>{{annualGoal}}</b> Litres per year</h6>
+        <h6 style="margin-left:15px"><b>{{monthlyGoal}}</b> Litres per month</h6>
+        <h6 style="margin-left:15px"><b>{{dailyGoal}}</b> Litres per day</h6>
+        <button class="goalModal" style="text-decoration: none"><small><i class="fa fa-wrench"></i> Configure your goal here</small></button>
+    </div>
+</template>
+
+<template name="currentGoalYear">
+    <div style="margin-top:30px">
+    	<h5 class="text-center">Annual Goal:</h5>
+    	<h6 class="text-center animated fadeInDown">{{Year}}</h6>
+        <canvas id="doughnutChart1" height="300"></canvas>
+    </div>
+</template>
+
+<template name="currentGoalMonth">
+    <div style="margin-top:30px">
+    	<h5 class="text-center">Monthly Goal</h5>
+    	<h6 class="text-center animated fadeInDown">{{Month}}</h6>
+        <canvas id="doughnutChart2" height="300"></canvas>
+    </div>
+</template>
+
+<template name="currentGoalDay">
+    <div style="margin-top:30px">
+    	<h5 class="text-center">Daily Goal</h5>
+    	<h6 class="text-center animated fadeInDown">{{FullDate}}</h6>
+        <canvas id="doughnutChart3" height="300"></canvas>
+    </div>
+</template>
+
+<template name="goalModal">
+    <div class="modal inmodal waterGoalModal" id="myModal4" tabindex="-1" role="dialog"  aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content animated fadeIn">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <i class="glyphicon glyphicon-wrench modal-icon"></i>
+                    <h4 class="modal-title">Water Goal Configuration</h4>
+                    <div><small>Please note that, changes made in configuration will reflect to the goal in dashboard.</small></div>
+                </div>
+                <div class="modal-body">
+                    <p><strong>Current Annual Goal: </strong></p><input id="yearGoalInput" type="text" placeholder="Please Insert Data" class="form-control"><br>
+                    <p><strong>Current Monthly Goal:  </strong></p><input id="monthGoalInput" type="text" placeholder="Please Insert Data" class="form-control"><br>
+                    <p><strong>Current Daily Goal: </strong></p><input id="dayGoalInput" type="text" placeholder="Please Insert Data" class="form-control"><br>
+                    <hr>
+                    <p><strong>Water Closet Daily Goal: </strong></p><input id="WaterClosetGoalInput" type="text" placeholder="Please Insert Data" class="form-control"><br>
+                    <p><strong>Bathroom Daily Goal: </strong></p><input id="BathroomGoalInput" type="text" placeholder="Please Insert Data" class="form-control"><br>
+                    <p><strong>Kitchen Daily Goal: </strong></p><input id="KitchenGoalInput" type="text" placeholder="Please Insert Data" class="form-control">
+                    <p><small>*All unit in Litres</small></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-white" data-dismiss="modal">Cancel</button>
+                    <a href="/water-goal"><button type="button" class="btn btn-primary editEventButton">Save Changes</button></a>
+                </div>
+            </div>
+        </div>
+    </div><!--  eventModal -->
+</template>
+
+
+
+
+
+<template name="waterClosetGoal">
+    <div class="animated fadeInLeft visible-lg visible-xs">
+        <h2><i class="fa fa-tint"></i> Water Closet</h2>
+        <h5 style="margin-left:30px"><b>{{annualGoal}}</b> Litres per year</h5>
+        <h5 style="margin-left:30px"><b>{{monthlyGoal}}</b> Litres per month</h5>
+        <h5 style="margin-left:30px"><b>{{dailyGoal}}</b> Litres per day</h5><br>
+    </div>
+    <div class="animated fadeInLeft visible-md visible-sm">
+        <h4><i class="fa fa-tint"></i> Water Closet</h4>
+        <h6 style="margin-left:15px"><b>{{annualGoal}}</b> Litres per year</h6>
+        <h6 style="margin-left:15px"><b>{{monthlyGoal}}</b> Litres per month</h6>
+        <h6 style="margin-left:15px"><b>{{dailyGoal}}</b> Litres per day</h6>
+    </div>
+</template>
+
+<template name="waterClosetGoalYear">
+    <div style="margin-top:30px">
+        <h5 class="text-center">Annual Goal:</h5>
+        <h6 class="text-center animated fadeInDown">{{Year}}</h6>
+        <canvas id="doughnutChart4" height="300"></canvas>
+    </div>
+</template>
+
+<template name="waterClosetGoalMonth">
+    <div style="margin-top:30px">
+        <h5 class="text-center">Monthly Goal</h5>
+        <h6 class="text-center animated fadeInDown">{{Month}}</h6>
+        <canvas id="doughnutChart5" height="300"></canvas>
+    </div>
+</template>
+
+<template name="waterClosetGoalDay">
+    <div style="margin-top:30px">
+        <h5 class="text-center">Daily Goal</h5>
+        <h6 class="text-center animated fadeInDown">{{FullDate}}</h6>
+        <canvas id="doughnutChart6" height="300"></canvas>
+    </div>
+</template>
+
+
+
+
+
+<template name="bathroomGoal">
+    <div class="animated fadeInLeft visible-lg visible-xs">
+        <h2><i class="fa fa-tint"></i> Bathroom</h2>
+        <h5 style="margin-left:30px"><b>{{annualGoal}}</b> Litres per year</h5>
+        <h5 style="margin-left:30px"><b>{{monthlyGoal}}</b> Litres per month</h5>
+        <h5 style="margin-left:30px"><b>{{dailyGoal}}</b> Litres per day</h5><br>
+    </div>
+    <div class="animated fadeInLeft visible-md visible-sm">
+        <h4><i class="fa fa-tint"></i> Bathroom</h4>
+        <h6 style="margin-left:15px"><b>{{annualGoal}}</b> Litres per year</h6>
+        <h6 style="margin-left:15px"><b>{{monthlyGoal}}</b> Litres per month</h6>
+        <h6 style="margin-left:15px"><b>{{dailyGoal}}</b> Litres per day</h6>
+    </div>
+</template>
+
+<template name="bathroomGoalYear">
+    <div style="margin-top:30px">
+        <h5 class="text-center">Annual Goal:</h5>
+        <h6 class="text-center animated fadeInDown">{{Year}}</h6>
+        <canvas id="doughnutChart7" height="300"></canvas>
+    </div>
+</template>
+
+<template name="bathroomGoalMonth">
+    <div style="margin-top:30px">
+        <h5 class="text-center">Monthly Goal</h5>
+        <h6 class="text-center animated fadeInDown">{{Month}}</h6>
+        <canvas id="doughnutChart8" height="300"></canvas>
+    </div>
+</template>
+
+<template name="bathroomGoalDay">
+    <div style="margin-top:30px">
+        <h5 class="text-center">Daily Goal</h5>
+        <h6 class="text-center animated fadeInDown">{{FullDate}}</h6>
+        <canvas id="doughnutChart9" height="300"></canvas>
+    </div>
+</template>
+
+
+
+
+
+<template name="kitchenGoal">
+    <div class="animated fadeInLeft visible-lg visible-xs">
+        <h2><i class="fa fa-tint"></i> Kitchen</h2>
+        <h5 style="margin-left:30px"><b>{{annualGoal}}</b> Litres per year</h5>
+        <h5 style="margin-left:30px"><b>{{monthlyGoal}}</b> Litres per month</h5>
+        <h5 style="margin-left:30px"><b>{{dailyGoal}}</b> Litres per day</h5><br>
+    </div>
+    <div class="animated fadeInLeft visible-md visible-sm">
+        <h4><i class="fa fa-tint"></i> Kitchen</h4>
+        <h6 style="margin-left:15px"><b>{{annualGoal}}</b> Litres per year</h6>
+        <h6 style="margin-left:15px"><b>{{monthlyGoal}}</b> Litres per month</h6>
+        <h6 style="margin-left:15px"><b>{{dailyGoal}}</b> Litres per day</h6>
+    </div>
+</template>
+
+<template name="kitchenGoalYear">
+    <div style="margin-top:30px">
+        <h5 class="text-center">Annual Goal:</h5>
+        <h6 class="text-center animated fadeInDown">{{Year}}</h6>
+        <canvas id="doughnutChart10" height="300"></canvas>
+    </div>
+</template>
+
+<template name="kitchenGoalMonth">
+    <div style="margin-top:30px">
+        <h5 class="text-center">Monthly Goal</h5>
+        <h6 class="text-center animated fadeInDown">{{Month}}</h6>
+        <canvas id="doughnutChart11" height="300"></canvas>
+    </div>
+</template>
+
+<template name="kitchenGoalDay">
+    <div style="margin-top:30px">
+        <h5 class="text-center">Daily Goal</h5>
+        <h6 class="text-center animated fadeInDown">{{FullDate}}</h6>
+        <canvas id="doughnutChart12" height="300"></canvas>
+    </div>
+</template>
