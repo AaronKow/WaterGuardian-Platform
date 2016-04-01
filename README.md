@@ -8,7 +8,7 @@ This project hardware documentation can be found [here]().
 <!-- toc -->
 
 * [Makers Against Drought](#makers-against-drought)
-* [WaterGuardian Platform Source Codes](#waterguardian-hardware-source-codes)
+* [WaterGuardian Platform Source Codes](#waterguardian-platform-source-codes)
 * [Meteor Packages](#meteor-packages)
 * [How to Use this Source Code](#how-to-use-this-source-code)
 * [Features of WaterGuardian Platform](#features-of-waterguardian-platform)
