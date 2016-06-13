@@ -2,7 +2,7 @@
 WaterGuardian is an IoT prototype designed to conserve water with its two major features, observe + track + control every drop of water you use in home and rain harvesting. Unlike ordinary water conservation system, WaterGuardian is an IoT solution that able to deliver connectivity, real-time capability and data-analysis to users. With connectivity, users can access this system anywhere, anytime at any part of the world (as long as there is internet), all the data will behave in real-time and these tracked data provides valuable insights to users to analyse the consumption pattern in their home and enable them making better decision about their water consumption in the future.
 
 ## Work with WaterGuardian Hardware
-This project hardware documentation can be found [here]().
+This project hardware documentation can be found [here](https://github.com/AaronKow/WaterGuardian-Hardware).
 
 ## Table of Contents
 <!-- toc -->
@@ -68,7 +68,7 @@ $ meteor
 That should be fine, because I used a package called "meteorhacks:npm", it requires to download the "npm-container" in the folder packages in order to support npm in Meteor. After that, you should initiate `$meteor` again, and run the code with no problem.
 
 ## Features of WaterGuardian Platform
-### Dashboard 
+### Dashboard
 Allow users to have an overview about the water consumption pattern last 48-hours, current weather, real-time consumption bar, water goal and consumption forecast for next 24-hours.
 ![WaterGuardian Dashboard](https://raw.githubusercontent.com/AaronKow/WaterGuardian-Platform/master/public/GitHub/WaterGuardian-dashboard.jpg)
 
@@ -76,11 +76,11 @@ Allow users to have an overview about the water consumption pattern last 48-hour
 Forecast about the weather based on users location, with full report forecast for next 2 days, and temperature pattern within 48-hours.
 ![WaterGuardian Weather Forecast](https://raw.githubusercontent.com/AaronKow/WaterGuardian-Platform/master/public/GitHub/WaterGuardian_weather_forecast.jpg)
 
-### Consumption Calendar 
+### Consumption Calendar
 Enable users to view their water consumption in Calendar mode. Each blocks present with location, description, total usage, average rate and duration gap during usage.
 ![WaterGuardian Consumption Calendar](https://raw.githubusercontent.com/AaronKow/WaterGuardian-Platform/master/public/GitHub/WaterGuardian_Consumption_Calendar.jpg)
 
-### Water Goal 
+### Water Goal
 Enable users to set their own water goal. Water goal determine how much water they want to use, once the actual water consumption exceed their water goal, WaterGuardian will send notification to users and stop the water flow with defined location (eg: water-closet, bathroom, kitchen or all).
 ![WaterGuardian Water Goal](https://raw.githubusercontent.com/AaronKow/WaterGuardian-Platform/master/public/GitHub/WaterGuardian_Water_Goal.jpg)
 
@@ -92,7 +92,7 @@ This provide users with real-time monitoring the consumption flow rate data (uni
 If the water data consumption has exceeded the water goal, this platform will send an warning email to your email address. So, in this tab, you can configure your email address here. This allow Artik 10 to send email to you. All of this is done using [MailGun API](https://documentation.mailgun.com/api_reference.html).
 ![WaterGuardian Email Notification](https://raw.githubusercontent.com/AaronKow/WaterGuardian-Platform/master/public/GitHub/WaterGuardian_Email_Notification.jpg)
 
-### Data-Logging 
+### Data-Logging
 This provide full report about water consumption data to users.
 ![WaterGuardian Data Logging](https://raw.githubusercontent.com/AaronKow/WaterGuardian-Platform/master/public/GitHub/WaterGuardian_Data_Logging.jpg)
 
