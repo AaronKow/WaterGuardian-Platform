@@ -11,12 +11,12 @@ if (Meteor.isServer) {
 				});
 			}
 		},
-		'addWaterSchedule': function(device_id, sensor_locate, water_data){
+		'addWaterSchedule': function(device_id, sensor_locate, water_data, timeInput){
 			var calendar = Calendar.findOne({'owner_id': device_id});
 			var checker = false;	// checker for data existence
 
 			/* Get Current Time */
-			var time = new Date();
+			var time = timeInput || new Date();
 			var ISOTime = time.toISOString();
 			var timeChecker1 = moment(time).format('MMMM Do YYYY');
 
@@ -96,7 +96,7 @@ if (Meteor.isServer) {
 			}
 
 
-			
+
 			Calendar.update({'owner_id': device_id}, calendar);
 		},
 		'getCalendarModal': function(sensor_locate, data_time){

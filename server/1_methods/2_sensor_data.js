@@ -57,7 +57,7 @@ if (Meteor.isServer) {
 				console.log('Complete Creating an Account for: ' + Meteor.userId());
 			}
 		},
-		'inputData': function(device_id, device_token, sensor_locate, water_data, l_min_data, l_hour_data) {
+		'inputData': function(device_id, device_token, sensor_locate, water_data, l_min_data, l_hour_data, timeInput) {
 			/* Verification for Device ID and Token */
 			var ID = ApiCollection.findOne({
 				'owner_id': device_id
@@ -93,7 +93,7 @@ if (Meteor.isServer) {
 				if((water_data === 0) && (!sensorData.water_data)){
 					// this is to prevent redundant 0 in database
 					return false;
-				}	
+				}
 			}
 			if(water_data > 0.2){
 				// this is to prevent error of hardware suddenly input higher water value
@@ -101,7 +101,7 @@ if (Meteor.isServer) {
 				return false;
 			}
 
-			var time = new Date();
+			var time = timeInput || new Date();
 			var ISOTime = time.toISOString();
 			var timeChecker1 = moment(time).format('MMMM Do YYYY');
 			var timeChecker2 = time.getTime(); // Returns the number of milliseconds since midnight Jan 1 1970

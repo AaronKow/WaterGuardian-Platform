@@ -20,6 +20,9 @@ This project hardware documentation can be found [here](https://github.com/Aaron
   * [Data-Logging](#data-logging)
   * [Email Notification](#email-notification)
   * [API Calls](#api-calls)
+* [Testing this Platform](#testing-this-platform)
+  * [Generate Random Data for 5-days](#generate-random-data-for-5-days)
+  * [Simulation Data for Real-Time Monitoring](#simulation-data-for-real-time-monitoring)
 * [License](#license)
 
 <!-- toc stop -->
@@ -99,6 +102,27 @@ This provide full report about water consumption data to users.
 ### API Calls
 This project is a RESTful model that provide required Device ID and Device Token in order for any IoT device to POST sensor data and GET command from this platform.
 ![WaterGuardian API Calls](https://raw.githubusercontent.com/AaronKow/WaterGuardian-Platform/master/public/GitHub/WaterGuardian_API_Calls.jpg)
+
+## Testing this Platform
+### Generate Random Data for 5-days
+In this method, it will generate random data for 5-days.
+```javascript
+/* To initiate the data generation, you need to type the following in your browser console: */
+Meteor.call('inputRandomData');
+```
+
+### Simulation Data for Real-Time Monitoring
+In the latest update contains the method for simulating the real-time data for water-closet, bathroom and kitchen. The water flow for this simulation is based on the actual water flow from the hardware itself. To initiate the simulation method, you need to type the following in your browser console:
+```javascript
+/* PLEASE BE NOTE THAT SIMULATION BELOW MUST BE RUN SEPERATELY */
+// to start the simulation
+Meteor.call('startSimulation', 'water_closet'); // for water closet
+Meteor.call('startSimulation', 'bathroom'); // for bathroom
+Meteor.call('startSimulation', 'kitchen');  // for kitchen
+
+// to stop the simulation
+Meteor.call('stopSimulation');  // this will stop all simulation process
+```
 
 ## License
 The license of this project is under MIT License, see the LICENSE for more information.

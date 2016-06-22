@@ -3,24 +3,14 @@ Template.dashboard.events({
         Meteor.call('initiateAccount');
     },
     'click .testBut': function(evt) {
-        // alert('Hello!');
-        // Meteor.call('testData');
-
         Meteor.call('inputData', $('.inputSensor').val(), $('.flowRate1').val(), $('.flowRate2').val());
-        // alert($('.inputSensor').val());
     }
 });
 
 Template.dashboard.helpers({
     'reactiveData': function() {
+        // this for weather data
         Meteor.call('getCurrentForecast', Geolocation.latLng().lat, Geolocation.latLng().lng);
-        renderWaterForecast();
-        // Meteor.call('getCurrentForecast', Geolocation.latLng().lat, Geolocation.latLng().lng, function(err, res) {
-        //     if (res) {
-        //         renderConsumptionPatten();
-        //         renderWaterForecast();
-        //     }
-        // });
     },
     'waterGoalChecker': function(){
         var goal = WaterGoal.findOne({});
@@ -130,8 +120,13 @@ Template.waterConsumption.onRendered(function() {
 
 Template.waterForecast.events({
     'click .refreshForecast': function() {
+        $('.refreshForecast').attr("disabled", true);
         $(".refreshForecast").html('Loading ...');
-        Meteor.call('getWaterForecast');
+        Meteor.call('getWaterForecast', function(err, res){
+          if(res === true){
+            renderWaterForecast();
+          }
+        });
     }
 });
 

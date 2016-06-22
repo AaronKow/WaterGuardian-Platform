@@ -1,24 +1,8 @@
 if (Meteor.isClient) {
 
 	renderWaterForecast = function() {
-		/* Dataset Configuration for hour forecast data */
-		var hourForecastData = HourForecast.findOne({});
-		var arrayTime = [],
-			arrayPrecipitation = [],
-			arrayWindSpeed = [],
-			arrayTemperature = [];
-		for (var i = 0; i < hourForecastData.forecast_data.length; i++) {
-			var d = new Date(hourForecastData.forecast_data[i].forecastTime);
-			// var result = d.toLocaleTimeString();
-			var result = moment(d).format("h a");
-
-			arrayTime.push(result);
-			arrayPrecipitation.push(hourForecastData.forecast_data[i].precipitation);
-			arrayWindSpeed.push(hourForecastData.forecast_data[i].windSpeed);
-			arrayTemperature.push(hourForecastData.forecast_data[i].temperature);
-		}
-
 		$(".refreshForecast").html('Refresh Forecast Data');
+		$('.refreshForecast').attr("disabled", false);
 		var arrayData = ForecastCollection.findOne();
 
 		/* Line chart configuration for hour forecast */
@@ -32,7 +16,9 @@ if (Meteor.isClient) {
 				pointStrokeColor: "#fff",
 				pointHighlightFill: "#fff",
 				pointHighlightStroke: "rgba(26,179,148,1)",
-				data: arrayData.array_data
+				data: arrayData.array_data.map(function(data){
+					return data;
+				})
 			}]
 		};
 
@@ -51,6 +37,10 @@ if (Meteor.isClient) {
 			datasetFill: true,
 			responsive: true
 		};
+
+		$("#lineChart").remove();
+		$(".canvasHolder").append('<canvas id="lineChart" width="auto" height="80%"></canvas>');
+
 		var ctx = document.getElementById("lineChart").getContext("2d");
 		var myNewChart = new Chart(ctx).Line(lineData, lineOptions);
 	};
@@ -619,26 +609,7 @@ if (Meteor.isClient) {
 
 			},
 			eventClick: function(event, jsEvent, view) {
-
-				/* Update database immerdiately with selected event */
-				// if(event.allDay){
-				// 	var startDate = event.start.format();
-				// 	var endDate = '';
-				// 	var allDay = event.allDay;
-				// 	var eventIcon = event.event_icon;
-				// 	Meteor.call('getScheduleModal', event.title, event.schedule_id, startDate, endDate, allDay, eventIcon);  // to show clicked event for modal
-				// } else {
-				// 	var startDate = event.start.format();
-				// 	var endDate = event.end.format();
-				// 	var allDay = event.allDay;
-				// 	var eventIcon = event.event_icon;
-				// 	Meteor.call('getScheduleModal', event.title, event.schedule_id, startDate, endDate, allDay, eventIcon);
-				// }
-
-				// console.log(().toISOString());
 				Meteor.call('getCalendarModal', event.sensor_locate, new Date(event.start)); // to show clicked event for modal
-				// Meteor.call('getCalendarModal', event.sensor_locate, event.start);  // to show clicked event for modal
-
 				$('.eventModal').modal('show');
 				$('.eventModal').on('shown.bs.modal', function() {
 					$('.eventModal').focus();
@@ -655,7 +626,7 @@ if (Meteor.isClient) {
 		// arrayData in x and y format
 		var rawData = SensorData.find({
 			'sensor_locate': dbNotation
-		}).fetch();
+		}, {sort: {created_date: 1}}).fetch();
 		var arrayData = [];
 
 		for (var i = 0; i < rawData.length; i++) {
@@ -664,6 +635,7 @@ if (Meteor.isClient) {
 				'y': rawData[i].water_data
 			});
 		}
+		console.log(arrayData);
 
 		// instantiate our graph!
 		var graph = new Rickshaw.Graph({

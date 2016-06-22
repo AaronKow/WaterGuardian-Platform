@@ -1,20 +1,15 @@
 <template name="dashboard">
     {{reactiveData}}
     {{waterGoalChecker}}
-    <!-- <button class="setupLaunch">Launch</button>
-    <button class="testBut">Set</button>
-    <input type="text" class="inputSensor" name="text" placeholder="Insert Sensor Data" />
-    <input type="text" class="flowRate1" name="text" placeholder="L/min flow rate" />
-    <input type="text" class="flowRate2" name="text" placeholder="L/hour flow rate" /> -->
     <div class="col-sm-10 col-md-10">
         <div class="row animated fadeIn">
             <div class="col-sm-12 col-md-12 content">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><a href="/dashboard"><b>Overview</b></a></div>
+                    <div class="panel-heading"><b>Overview</b></div>
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-lg-3 col-sm-12">
-                               {{> cityForecast}} 
+                               {{> cityForecast}}
                             </div>
                             <div class="col-lg-9 col-sm-12">
                                 {{> waterConsumption}}
@@ -39,7 +34,7 @@
                     </div>
                     <div class="panel-body text-center">
                         <p class="text-display">{{totalYear}} Litres</p>
-                    </div> 
+                    </div>
                 </div>
             </div><!-- Total Water Consumption -->
             <div class="col-sm-3 col-md-3 content">
@@ -75,7 +70,7 @@
                     </div>
                     <div class="panel-body text-center">
                         <p class="text-display">{{totalAvgRate}} L/min</p>
-                    </div> 
+                    </div>
                 </div>
             </div><!-- Total Water Consumption -->
             <div class="col-sm-3 col-md-3 content">
@@ -93,23 +88,23 @@
                     </div>
                     <div class="panel-body text-center">
                         <p class="text-display">{{currentRate}} L/min</p>
-                    </div> 
+                    </div>
                 </div>
             </div><!-- Total Water Consumption -->
-            
+
            <div class="col-sm-12 col-md-12 content">
                 <div class="panel panel-default">
                     <div class="panel-heading"><b>Forecast &amp; Current Water Goal</b></div>
                     <div class="panel-body">
                         <div class="col-lg-9 col-sm-12">
-                            {{> waterForecast}} 
+                            {{> waterForecast}}
                         </div>
                         <div class="col-lg-3 col-sm-12">
                             {{> waterGoal}}
                         </div>
-                        
-                        
-                    </div> 
+
+
+                    </div>
                 </div>
             </div><!-- Total Water Consumption -->
 
@@ -137,14 +132,14 @@
 <template name="waterForecast">
     <h3 style="margin-top: 20px">Consumption Forecast for next 24-hours</h3>
     <button class="refreshForecast" type="button">Refresh Forecast Data</button>
-    <div>
+    <div class="canvasHolder">
         <canvas id="lineChart" width="auto" height="80%"></canvas>
     </div>
     <p style="margin-top: 10px;">
         <small id="flot-data">*Water Consumption Unit in Litres</small>
         <br>
         <i>
-            <small id="flot-data">*Water Consumption Forecast is still under testing. It is developed using 
+            <small id="flot-data">*Water Consumption Forecast is still under testing. It is developed using
                 <a href="https://azure.microsoft.com/en-us/documentation/articles/machine-learning-r-csharp-arima/" target="_blank">ARIMA</a> published by Azure Machine Learning.</small>
         </i>
     </p>

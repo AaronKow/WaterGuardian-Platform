@@ -12,7 +12,11 @@ Meteor.startup(function () {
 				"APIkey": "<PLACE YOUR MAIL-GUN API KEY HERE>",
 				"Domain": "<PLACE YOUR DOMAIN HERE>",
 				"senderEmail": "<PLACE YOUR SENDER EMAIL HERE>"
-			}
+			},
+      "waterForecast": {
+        "url": "https://ussouthcentral.services.azureml.net/workspaces/c1dfab67787348e7a1230b68250cbc6f/services/c04b2eaa416f4bb58090096cd71f4f3b/execute?api-version=2.0",
+        "auth": "Bearer UEuAbEJC8jfn3CFXcQLQK/P0Nnd1tElqKhf1/WVHZ83LujI75peILqNNw/mLq7k04WBCgCIFEqN0sLa1z4PcZQ=="
+      }
 		}
 	};
 

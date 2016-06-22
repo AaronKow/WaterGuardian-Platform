@@ -167,7 +167,7 @@ Router.map(function() {
 		path: '/sensordata',
 		where: 'server',
 		action: function() {
-			Meteor.call('inputData', this.request.body.id, this.request.body.token, this.request.body.sensor_locate, this.request.body.water_data, this.request.body.l_min_data, this.request.body.l_hour_data);
+			Meteor.call('inputData', this.request.body.id, this.request.body.token, this.request.body.sensor_locate, this.request.body.water_data, this.request.body.l_min_data, this.request.body.l_hour_data, "");
 			// console.log("Water Data: " + this.request.body.water_data);
 			// console.log("l_min Data: " + this.request.body.l_min_data);
 			// console.log("l_hour Data: " + this.request.body.l_hour_data + "\n");

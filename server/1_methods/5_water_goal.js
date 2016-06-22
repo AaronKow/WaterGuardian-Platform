@@ -131,27 +131,36 @@ if (Meteor.isServer) {
 			var yearTotal = YearTotal.findOne({'owner_id': owner_id});
 			var monthTotal = MonthTotal.findOne({'owner_id': owner_id});
 			var todayTotal = TodayTotal.findOne({'owner_id': owner_id});
-			
+
 			/* Stop all water flow if goal is reached */
 			if((parseFloat(yearTotal.water_data) > parseFloat(waterGoal.annual_data.data_goal)) || (parseFloat(monthTotal.water_data) > parseFloat(waterGoal.monthly_data.data_goal)) || (parseFloat(todayTotal.water_data) > parseFloat(waterGoal.daily_data.data_goal))){
 				Meteor.call('setRemoteState', owner_id, "water_closet", 0);
 				Meteor.call('setRemoteState', owner_id, "bathroom", 0);
 				Meteor.call('setRemoteState', owner_id, "kitchen", 0);
+
+				// stop simulation if applicable
+				runSimulation = false;
 			}
 
 			/* Stop Water Flow at Water Closet if goal is reached */
 			if((parseFloat(sensorRecords.water_closet.year) > parseFloat(waterGoal.water_closet_data.year_goal)) || (parseFloat(sensorRecords.water_closet.month) > parseFloat(waterGoal.water_closet_data.month_goal)) || (parseFloat(sensorRecords.water_closet.day) > parseFloat(waterGoal.water_closet_data.day_goal))){
 				Meteor.call('setRemoteState', owner_id, "water_closet", 0);
+				// stop simulation if applicable
+				runSimulation = false;
 			}
 
 			/* Stop Water Flow at Bathroom if goal is reached */
 			if((parseFloat(sensorRecords.bathroom.year) > parseFloat(waterGoal.bathroom_data.year_goal)) || (parseFloat(sensorRecords.bathroom.month) > parseFloat(waterGoal.bathroom_data.month_goal)) || (parseFloat(sensorRecords.bathroom.day) > parseFloat(waterGoal.bathroom_data.day_goal))){
 				Meteor.call('setRemoteState', owner_id, "bathroom", 0);
+				// stop simulation if applicable
+				runSimulation = false;
 			}
 
 			/* Stop Water Flow at Kitchen if goal is reached */
 			if((parseFloat(sensorRecords.kitchen.year) > parseFloat(waterGoal.kitchen_data.year_goal)) || (parseFloat(sensorRecords.kitchen.month) > parseFloat(waterGoal.kitchen_data.month_goal)) || (parseFloat(sensorRecords.kitchen.day) > parseFloat(waterGoal.kitchen_data.day_goal))){
 				Meteor.call('setRemoteState', owner_id, "kitchen", 0);
+				// stop simulation if applicable
+				runSimulation = false;
 			}
 		}
 	});
