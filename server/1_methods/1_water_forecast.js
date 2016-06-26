@@ -3,6 +3,7 @@ if (Meteor.isServer) {
 		'getWaterForecast': function() {
 			console.log("\n\nCollecting all previous data, please wait ...")
 
+			// get all water data from current user
 			var sensorData = SensorData.find({
 				'owner_id': Meteor.userId()
 			}, {
@@ -15,6 +16,7 @@ if (Meteor.isServer) {
 				artificialPush2 = false;
 			var benchmarkTime;
 
+			// sort all the data in 24 hours format
 			for (var i = 0; i < 24; i++) {
 				sensorData.forEach(function(data1) {
 					if (i == moment(data1.created_date).format('H')) {
